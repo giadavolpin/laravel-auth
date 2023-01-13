@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
 
@@ -24,7 +25,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.index', compact('projects'));
     }
 
     /**
@@ -35,7 +36,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
     }
 
     /**
@@ -80,6 +81,7 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.project.index')->with('message', "$project->title deleted seccessfully");
     }
 }
