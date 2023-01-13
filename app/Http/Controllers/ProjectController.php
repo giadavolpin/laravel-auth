@@ -15,8 +15,8 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $projects = 
+    {
+        $projects = Project::all(); //ci deve essere un errore qui
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -38,7 +38,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
         $slug = Project::generateSlug($request->title);
         $data['slug'] = $slug;
         Project::create($data);
