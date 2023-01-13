@@ -3,7 +3,7 @@
 @section('content')
     <h1>projects</h1>
     <div class="text-end">
-        <a class="btn btn-success" href="{{route('admin.projects.create')}}">Crea nuovo project</a>
+        {{-- <a class="btn btn-success" href="{{route('admin.projects.create')}}">Crea nuovo project</a> --}}
     </div>
 
     @if(session()->has('message'))

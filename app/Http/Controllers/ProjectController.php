@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
 
+
 class ProjectController extends Controller
 {
     /**
@@ -14,8 +15,9 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('project.index'); // IMPORTARE UN USE SOPRA NON CAPISCO, QUALE????
+    {   
+        $projects = 
+        return view('admin.projects.index', compact('projects'));
     }
 
     /**
@@ -37,6 +39,10 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $slug = Project::generateSlug($request->title);
+        $data['slug'] = $slug;
+        Project::create($data);
+        return redirect()->route('admin.projects.show');
     }
 
     /**
