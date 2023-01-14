@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
-
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -16,7 +16,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all(); //ci deve essere un errore qui
+        /*   $projects = Project::all(); *///ci deve essere un errore qui
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -43,6 +43,14 @@ class ProjectController extends Controller
         $data['slug'] = $slug;
         Project::create($data);
         return redirect()->route('admin.projects.show');
+        if ($request->hasFile('cover_image')) {
+            $path = Storage::disk('public')->put('post_images', $request->cover_image); //put per salvare img
+            $data['cover_image'] = $path;
+        }
+
+        $new_post = Post::create($data);
+        return redirect()->route('admin.posts.show', $new_post->slug);
+
     }
 
     /**
