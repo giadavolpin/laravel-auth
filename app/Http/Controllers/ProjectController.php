@@ -16,7 +16,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        /*   $projects = Project::all(); *///ci deve essere un errore qui
+        $projects = Project::all();
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -95,7 +95,7 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        $project->delete();
-        return redirect()->route('admin.project.index')->with('message', "$project->title deleted seccessfully");
+        // $project->delete();
+        // return redirect()->route('admin.project.index')->with('message', "$project->title deleted seccessfully");
     }
 }
