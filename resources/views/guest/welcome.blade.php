@@ -9,7 +9,6 @@
 
        </div>
 </div>
-<img class="jumbotron" src=".\Users\Utente\Pictures\2015\mexico 3.2015\201.JPG" alt="">   {{-- NON FUNZIONA  --}}
 
 @endsection
 

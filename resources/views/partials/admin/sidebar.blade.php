@@ -9,7 +9,6 @@
                 <i class="fa-solid fa-newspaper fa-lg fa-fw"></i> Posts
             </a>
         </li>
-        @if(Auth::check() && Auth::user()->isAdmin())
             <li class="nav-item">
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.categories.index' ? 'bg-secondary' : '' }}" href="{{route('admin.categories.index')}}">
                     <i class="fa-solid fa-folder-open fa-lg fa-fw"></i> Categories
@@ -25,6 +24,6 @@
                     <i class="fa-solid fa-users fa-lg fa-fw"></i> Users
                 </a>
             </li>
-        @endif
+       
     </ul>
 </nav>
